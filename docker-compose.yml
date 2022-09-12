@@ -1,0 +1,16 @@
+version: '3'
+
+networks:
+  default:
+    name: my_bridge
+    external: true
+
+services:
+  forwardauth-middleware:
+    container_name: forwardauth-middleware
+    # network_mode: my_bridge
+    restart: unless-stopped
+    build: .
+    environment:
+      - github_oauth_authorize_url=https://local.wangqs.work/oauth-playground/github/
+      - github_oauth_userinfo_endpoint=https://local.wangqs.work/oauth-playground/github/callback

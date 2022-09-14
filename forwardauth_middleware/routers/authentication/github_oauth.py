@@ -26,6 +26,7 @@ async def authentication_by_github(
                               alias='auth_cookie_field'),
     authorization: Optional[str] = Cookie(None,
                                           alias='Authorization'),
+    samesite: str = Query('none'),
 ):
     """基于 GithubOAuth的身份验证.
 
@@ -71,6 +72,9 @@ async def authentication_by_github(
     Returns:
         _type_: _description_
     """
+    if frh.method.upper() == 'OPTIONS':
+        return PlainTextResponse()
+
     if settings.github_oauth_settings.github_oauth_authorize_url is None or settings.github_oauth_settings.github_oauth_userinfo_endpoint is None:
         logger.warning("未配置github oauth 相关信息")
         return PlainTextResponse('请联系管理员配置中间件信息', status_code=500)
@@ -119,7 +123,7 @@ async def authentication_by_github(
         logger.debug(f"authentication passed. final redirect url: {redirect_url}")
 
         response = RedirectResponse(redirect_url)
-        response.set_cookie(cookie_field, sig)
+        response.set_cookie(cookie_field, sig, secure=True, samesite=samesite)
         return response
     # 重定向到认证服务
 

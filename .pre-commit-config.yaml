@@ -44,7 +44,7 @@ repos:
         args: [--config=pyproject.toml]
 
 -   repo: https://github.com/qsoyq/precommit
-    rev: v0.0.3
+    rev: v0.0.4
     hooks:
       - id: check-poetry-package-version
         args: [--log_level=20]

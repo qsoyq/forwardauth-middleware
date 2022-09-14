@@ -131,13 +131,6 @@ async def authentication_by_github(
         authorize_url = settings.github_oauth_settings.github_oauth_authorize_url
         redirect_url = f'{frh.protocol}://{frh.host}{frh.uri}'
 
-        # urlsplit_result = urllib.parse.urlsplit(frh.uri)
-        # params = urllib.parse.parse_qs(urlsplit_result.query)
-        # params.pop('code', None)
-        # query = urllib.parse.urlencode(params, doseq=True)
-        # uri = f'{urlsplit_result.path}?{query}' if query else f'{urlsplit_result.path}'
-        # redirect_url = f'{frh.protocol}://{frh.host}{uri}'
-
         params = {'redirect_url': redirect_url}
         authorize_url = f"{authorize_url}?{urllib.parse.urlencode(params)}"
         logger.debug(f"redirect_url: {redirect_url}")

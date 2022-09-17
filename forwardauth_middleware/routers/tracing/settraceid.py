@@ -2,8 +2,7 @@ from typing import Optional
 
 from fastapi import Header
 from fastapi.responses import PlainTextResponse
-
-from forwardauth_middleware.utils.snowflake import Snowflake
+from pytoolkit.message.snowflake import Snowflake
 
 
 async def settraceid(x_trace_id: Optional[str] = Header(None, alias='X-Trace-Id')):

@@ -11,10 +11,15 @@ class ForwardRequestHeaders(BaseModel):
 
 
 async def get_forward_request_headers(
-    method: str = Header(alias='X-Forwarded-Method'),
-    protocol: str = Header(alias='X-Forwarded-Proto'),
-    host: str = Header(alias='X-Forwarded-Host'),
-    uri: str = Header(alias='X-Forwarded-Uri'),
-    ip: str = Header(alias='X-Forwarded-For')
+    method: str = Header(...,
+                         alias='X-Forwarded-Method'),
+    protocol: str = Header(...,
+                           alias='X-Forwarded-Proto'),
+    host: str = Header(...,
+                       alias='X-Forwarded-Host'),
+    uri: str = Header(...,
+                      alias='X-Forwarded-Uri'),
+    ip: str = Header(...,
+                     alias='X-Forwarded-For')
 ):
     return ForwardRequestHeaders(method=method, protocol=protocol, host=host, uri=uri, ip=ip)

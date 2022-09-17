@@ -22,9 +22,6 @@ mypy:
 build:
 	docker build --platform linux/amd64 -t $(IMAGE_NAME) .
 
-test:
-	PYTHONPATH=. pytest tests
-
 push:
 	docker push $(IMAGE_NAME)
 	if [ -n ${BARK_TOKEN} ]; then curl https://api.day.app/$(BARK_TOKEN)/$(PROJECT_NAME)%20push%20success; fi;

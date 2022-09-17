@@ -1,0 +1,2 @@
+github_oauth_authorize_url=https://local.wangqs.work/oauth-playground/github/
+github_oauth_userinfo_endpoint=https://local.wangqs.work/oauth-playground/github/callback

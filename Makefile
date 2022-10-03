@@ -1,7 +1,7 @@
 .PHONY: default format mypy build push test tox
 
 
-IMAGE_NAME := qsoyq/forwardauth_middleware
+IMAGE_NAME := qsoyq/forwardauth-middleware
 PROJECT_NAME := forwardauth_middleware
 
 default: build push

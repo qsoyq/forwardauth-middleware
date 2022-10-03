@@ -2,7 +2,9 @@ from __future__ import annotations
 
 from typing import Optional
 
-from pydantic import BaseModel, BaseSettings, HttpUrl
+from pydantic import BaseModel, BaseSettings
+
+from forwardauth_middleware.models import MyHttpUrl
 
 
 class Settings(BaseModel):
@@ -15,8 +17,8 @@ class _Settings(BaseSettings):
 
 
 class _GithubOAuthSettings(BaseSettings):
-    github_oauth_userinfo_endpoint: Optional[HttpUrl] = None
-    github_oauth_authorize_url: Optional[HttpUrl] = None
+    github_oauth_userinfo_endpoint: Optional[MyHttpUrl] = None
+    github_oauth_authorize_url: Optional[MyHttpUrl] = None
 
 
 Settings.update_forward_refs()

@@ -1,5 +1,5 @@
 from fastapi import Header
-from pydantic import BaseModel
+from pydantic import BaseModel, HttpUrl
 
 
 class ForwardRequestHeaders(BaseModel):
@@ -23,3 +23,8 @@ async def get_forward_request_headers(
                      alias='X-Forwarded-For')
 ):
     return ForwardRequestHeaders(method=method, protocol=protocol, host=host, uri=uri, ip=ip)
+
+
+class MyHttpUrl(HttpUrl):
+
+    tld_required: bool = False

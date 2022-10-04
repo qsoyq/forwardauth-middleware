@@ -20,6 +20,8 @@ COPY forwardauth_middleware /app/forwardauth_middleware
 
 RUN mkdir -p /logs
 
+RUN python -m pretty_errors -u -p
+
 EXPOSE 8000
 
 CMD python forwardauth_middleware/main.py -p 8000

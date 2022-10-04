@@ -6,7 +6,7 @@ from typing import List, Optional
 import httpx
 import jwt
 
-from fastapi import Cookie, Depends, Query, Request
+from fastapi import Depends, Query, Request
 from fastapi.responses import PlainTextResponse, RedirectResponse
 
 from forwardauth_middleware.models import ForwardRequestHeaders, get_forward_request_headers

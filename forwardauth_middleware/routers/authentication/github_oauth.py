@@ -24,8 +24,6 @@ async def authentication_by_github(
     frh: ForwardRequestHeaders = Depends(get_forward_request_headers),
     cookie_field: str = Query('github_oauth_sig',
                               alias='auth_cookie_field'),
-    authorization: Optional[str] = Cookie(None,
-                                          alias='Authorization'),
     samesite: str = Query('none'),
 ):
     """基于 GithubOAuth的身份验证.
